@@ -1,6 +1,8 @@
 '''
+AngleTest.py
 Created on Sep 9, 2016
-
+@author: Amanda Bailey
+Tests Angle.py
 '''
 import unittest
 import Navigation.prod.Angle as A

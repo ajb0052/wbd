@@ -21,7 +21,6 @@ class Angle():
     
     '''
     Purpose:
-    
     Parameters: "degrees" num of degrees (and portions of). 
         It is a numeric value (integer or float). Optional,  defaults to zero 
         if missing. Arrives invalidated, if present.
