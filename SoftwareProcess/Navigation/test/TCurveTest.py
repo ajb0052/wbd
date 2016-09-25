@@ -260,9 +260,13 @@ class TCurveTest(unittest.TestCase):
 #    def test500_010_ShouldCalculateIntegral(self):
 #        myT = T.TCurve(self.nominalN)
 #        self.assertAlmostEquals(myT.integrate(1, 4, myT.f), 0.5)
-#        
-    def test500_620_ShouldCalculateWhileCondition(self):
+#    
+    
+#   def test500_620_ShouldCalculateWhileCondition(self):
+#       myT = T.TCurve(self.nominalN)
+#       self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 1)
+#   
+    def test500_630_ShouldCalculateW(self):
         myT = T.TCurve(self.nominalN)
-        self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 1)
-
+        self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 4)
 

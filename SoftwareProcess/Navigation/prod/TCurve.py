@@ -68,9 +68,14 @@ class TCurve(object):
         epsilon = 0.001
         simpsonOld = 0
         simpsonNew = epsilon
+        lowBound = 0
+        highBound = 16
         s = 4
-        result = abs((simpsonNew - simpsonOld)) / simpsonNew
-        return result
+        while((abs((simpsonNew - simpsonOld)) / simpsonNew) > epsilon):
+            simpsonOld = simpsonNew
+            w = (highBound - lowBound) / s
+            break
+        return w
         
         
     
