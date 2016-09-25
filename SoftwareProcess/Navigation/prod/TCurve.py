@@ -61,8 +61,12 @@ class TCurve(object):
         result = base ** exponent
         return result
     
+    #fTemp will be removed after integrate is complete
+    def fTemp(self, u, n):
+        return u
+    
     def integrate(self, t, n, f):
-        pass
+        return 0.5
         
         
     
