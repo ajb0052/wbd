@@ -248,18 +248,18 @@ class TCurveTest(unittest.TestCase):
 # 400 integrate
 # Analysis
 #    inputs
-#        t
-#        n
-#        f
+#        t -> float mandatory
+#        n -> numeric mandatory validated
+#        f -> function mandatory
 #    outputs
 #        float .GE. 0
 # Happy path
-#    nominal case: 4
 # Sad path
-#        none... x is pre-validated?
+#
+
 #    def test500_010_ShouldCalculateIntegral(self):
 #        myT = T.TCurve(self.nominalN)
-#        self.assertAlmostEquals(myT.integrate(1, 2, myT.f), 0.5)
+#        self.assertAlmostEquals(myT.integrate(1, 4, myT.f), 0.5)
 #        
     def test500_620_ShouldCalculateWhileCondition(self):
         myT = T.TCurve(self.nominalN)
