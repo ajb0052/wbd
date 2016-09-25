@@ -62,7 +62,7 @@ class TCurve(object):
         return result
     
     def fTemp(self, u, n):
-        return u
+        return u**2
     
     def integrate(self, t, n, f):
         epsilon = 0.001
@@ -71,20 +71,30 @@ class TCurve(object):
         lowBound = 0
         highBound = 16
         s = 4
-        while((abs((simpsonNew - simpsonOld)) / simpsonNew) > epsilon):
+        while(abs((simpsonNew - simpsonOld) / simpsonNew) > epsilon):
             simpsonOld = simpsonNew
             w = (highBound - lowBound) / s
             #find value that will be added to w/3 for simpsonNew
             addToLB = 0.0
-            addToW3 = 0.0
+            multToW3 = 0.0
+            coefficient = 4
             i = 0
             while(i < (s+1)):
-                addToLB = i*w
-                addToW3 = addToW3 + self.fTemp((lowBound+addToLB), 1)
+                if(i == 0):
+                    multToW3 = multToW3 + self.fTemp(lowBound, 1)
+                elif(i<s):
+                    addToLB = i*w
+                    multToW3 = multToW3 + (coefficient * self.fTemp((lowBound+addToLB), 1))
+                    if(coefficient == 4):
+                        coefficient = coefficient - 2
+                    elif(coefficient == 2):
+                        coefficient = coefficient + 4
+                else:
+                    multToW3 = multToW3 + self.fTemp(highBound, 1)
                 i += 1
-            break
+            simpsonNew = (w/3) * multToW3
             s = s * 2
-        return addToW3
+        return simpsonNew
         
         
     
