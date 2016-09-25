@@ -75,13 +75,16 @@ class TCurve(object):
             simpsonOld = simpsonNew
             w = (highBound - lowBound) / s
             #find value that will be added to w/3 for simpsonNew
+            addToLB = 0.0
+            addToW3 = 0.0
             i = 0
             while(i < (s+1)):
                 addToLB = i*w
+                addToW3 = addToW3 + self.fTemp((lowBound+addToLB), 1)
                 i += 1
             break
             s = s * 2
-        return addToLB
+        return addToW3
         
         
     

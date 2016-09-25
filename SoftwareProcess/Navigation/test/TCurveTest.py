@@ -270,7 +270,11 @@ class TCurveTest(unittest.TestCase):
 #        myT = T.TCurve(self.nominalN)
 #        self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 4)
 
-    def test500_640_ShouldCalculateAddToLB(self):
+#    def test500_640_ShouldCalculateAddToLB(self):
+#        myT = T.TCurve(self.nominalN)
+#        self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 0)
+#        
+    def test500_650_ShouldCalculateAddToW3(self):
         myT = T.TCurve(self.nominalN)
         self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 0)
     
