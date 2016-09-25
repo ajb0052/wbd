@@ -70,7 +70,7 @@ class Angle():
     Raised when: "angle" is not a valid instance of Angle
     Exit conditions: The instance remains in the state it was 
         in before the method was invoked
-                                         '''
+    '''
     def add(self, angle):
         try:
             self.degrees = self.degrees + angle.degrees

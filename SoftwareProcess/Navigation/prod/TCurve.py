@@ -74,8 +74,14 @@ class TCurve(object):
         while((abs((simpsonNew - simpsonOld)) / simpsonNew) > epsilon):
             simpsonOld = simpsonNew
             w = (highBound - lowBound) / s
+            #find value that will be added to w/3 for simpsonNew
+            i = 0
+            while(i < (s+1)):
+                addToLB = i*w
+                i += 1
             break
-        return w
+            s = s * 2
+        return addToLB
         
         
     
