@@ -255,7 +255,7 @@ class TCurveTest(unittest.TestCase):
 #        float .GE. 0
 # Happy path
 # Sad path
-#
+#        none
 
 #    def test500_010_ShouldCalculateIntegral(self):
 #        myT = T.TCurve(self.nominalN)

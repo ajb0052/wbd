@@ -68,6 +68,7 @@ class TCurve(object):
         epsilon = 0.001
         simpsonOld = 0
         simpsonNew = epsilon
+        s = 4
         result = abs((simpsonNew - simpsonOld)) / simpsonNew
         return result
         
