@@ -90,73 +90,74 @@ class TCurveTest(unittest.TestCase):
 #        tails:  invalid tails    tails = 3
 #
 # Happy path
-#    def test600_010ShouldCalculateNominalCase1Tail(self):
-#        myT = T.TCurve(7)
-#        self.assertAlmostEquals(myT.p(1.8946, 1), .95, 3)
-#        
-#    def test600_020ShouldCalculateNominalCase2Tail(self):
-#        myT = T.TCurve(7)
-#        self.assertAlmostEquals(myT.p(1.8946, 2), .90, 3)
-#
-#    def test600_030ShouldCalculateLowNLowT1TailEdgeCase(self):
-#        myT = T.TCurve(3)
-#        self.assertAlmostEquals(myT.p(0.2767, 1), 0.6, 3)   
-#             
-#    def test600_040ShouldCalculateLowNLowT2TailEdgeCase(self):
-#        myT = T.TCurve(3)
-#        self.assertAlmostEquals(myT.p(0.2767, 2), 0.2, 3)        
-#
-#    def test600_050ShouldCalculateHighNLowT1TailEdgeCase(self):
-#        myT = T.TCurve(20)
-#        self.assertAlmostEquals(myT.p(0.2567, 1), 0.6, 3)
-#            
-#    def test600_060ShouldCalculateHighNLowT2TailEdgeCase(self):
-#        myT = T.TCurve(20)
-#        self.assertAlmostEquals(myT.p(0.2567, 2), 0.2, 3)    
-#
-#    def test600_070ShouldCalculateLowNHighT1EdgeCase(self):
-#        myT = T.TCurve(3)
-#        self.assertAlmostEquals(myT.p(5.8409, 1), .995, 3)
-#        
-#    def test600_080ShouldCalculateLowNHighT2EdgeCase(self):
-#        myT = T.TCurve(3)
-#        self.assertAlmostEquals(myT.p(5.8409, 2), .99, 3)
-#        
-#    def test600_090ShouldCalculateHighHighT1TailEdgeCase(self):
-#        myT = T.TCurve(20)
-#        self.assertAlmostEquals(myT.p(2.8453, 1), .995, 3)
-#        
-#    def test600_100ShouldCalculateHighHighT2TailEdgeCase(self):
-#        myT = T.TCurve(20)
-#        self.assertAlmostEquals(myT.p(2.8453, 2), .99, 3)
-#
+    def test600_010ShouldCalculateNominalCase1Tail(self):
+        myT = T.TCurve(7)
+        self.assertAlmostEquals(myT.p(1.8946, 1), .95, 3)
+
+
+    def test600_020ShouldCalculateNominalCase2Tail(self):
+        myT = T.TCurve(7)
+        self.assertAlmostEquals(myT.p(1.8946, 2), .90, 3)
+    
+    def test600_030ShouldCalculateLowNLowT1TailEdgeCase(self):
+        myT = T.TCurve(3)
+        self.assertAlmostEquals(myT.p(0.2767, 1), 0.6, 3)   
+             
+    def test600_040ShouldCalculateLowNLowT2TailEdgeCase(self):
+        myT = T.TCurve(3)
+        self.assertAlmostEquals(myT.p(0.2767, 2), 0.2, 3)        
+
+    def test600_050ShouldCalculateHighNLowT1TailEdgeCase(self):
+        myT = T.TCurve(20)
+        self.assertAlmostEquals(myT.p(0.2567, 1), 0.6, 3)
+            
+    def test600_060ShouldCalculateHighNLowT2TailEdgeCase(self):
+        myT = T.TCurve(20)
+        self.assertAlmostEquals(myT.p(0.2567, 2), 0.2, 3)    
+
+    def test600_070ShouldCalculateLowNHighT1EdgeCase(self):
+        myT = T.TCurve(3)
+        self.assertAlmostEquals(myT.p(5.8409, 1), .995, 3)
+        
+    def test600_080ShouldCalculateLowNHighT2EdgeCase(self):
+        myT = T.TCurve(3)
+        self.assertAlmostEquals(myT.p(5.8409, 2), .99, 3)
+        
+    def test600_090ShouldCalculateHighHighT1TailEdgeCase(self):
+        myT = T.TCurve(20)
+        self.assertAlmostEquals(myT.p(2.8453, 1), .995, 3)
+        
+    def test600_100ShouldCalculateHighHighT2TailEdgeCase(self):
+        myT = T.TCurve(20)
+        self.assertAlmostEquals(myT.p(2.8453, 2), .99, 3)
+
 ## Sad path
-#    def test600_910ShouldRaiseExceptionOnMissingT(self):
-#        expectedString = "TCurve.p:"
-#        myT = T.TCurve(self.nominalN)
-#        with self.assertRaises(ValueError) as context:
-#            myT.p(tails=1)                       
-#        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)]) 
-#        
-#    def test600_920ShouldRaiseExceptionOnOutOfBoundsT(self):
-#        expectedString = "TCurve.p:"
-#        myT = T.TCurve(self.nominalN)
-#        with self.assertRaises(ValueError) as context:
-#            myT.p(t= -1, tails=1)                       
-#        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)]) 
-#        
-#    def test600_930ShouldRaiseExceptionOnNonNumericT(self):
-#        expectedString = "TCurve.p:"
-#        myT = T.TCurve(self.nominalN)
-#        with self.assertRaises(ValueError) as context:
-#            myT.p(t= "abc", tails=1)                       
-#        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)]) 
-#            
-#    def test600_930ShouldRaiseExceptionInvalidTails(self):
-#        myT = T.TCurve(self.nominalN)
-#        with self.assertRaises(ValueError) as context:
-#            myT.p(t=self.nominalT, tails=0)
-#
+    def test600_910ShouldRaiseExceptionOnMissingT(self):
+        expectedString = "TCurve.p:"
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.p(tails=1)                       
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)]) 
+        
+    def test600_920ShouldRaiseExceptionOnOutOfBoundsT(self):
+        expectedString = "TCurve.p:"
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.p(t= -1, tails=1)                       
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)]) 
+        
+    def test600_930ShouldRaiseExceptionOnNonNumericT(self):
+        expectedString = "TCurve.p:"
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.p(t= "abc", tails=1)                       
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)]) 
+            
+    def test600_930ShouldRaiseExceptionInvalidTails(self):
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.p(t=self.nominalT, tails=0)
+
 #--------------------------------------------------------------------
 # Architecture:
 #    p -> calculateConstant
@@ -222,28 +223,14 @@ class TCurveTest(unittest.TestCase):
 # Sad path
 #            none ... x is pre-validated
 
-    def test400_010_ShouldCalculateFStarterCase(self):
-        myT = T.TCurve(self.nominalN)
-        self.assertAlmostEquals(myT.f(0, 5), 1, 4)
-        
-    def test400_020_ShouldCalculateF(self):
-        myT = T.TCurve(self.nominalN)
-        self.assertAlmostEquals(myT.f(1, 5), 0.578703704)
+#    def test400_010_ShouldCalculateFStarterCase(self):
+#        myT = T.TCurve(self.nominalN)
+#        self.assertAlmostEquals(myT.f(0, 5), 1, 4)
+#        
+#    def test400_020_ShouldCalculateF(self):
+#        myT = T.TCurve(self.nominalN)
+#        self.assertAlmostEquals(myT.f(1, 5), 0.578703704)
 
-# 400 fTemp: simple integral for testing integrate
-# Analysis
-#    inputs
-#        u -> numeric mandatory validated
-#        n -> float mandatory validated
-#    outputs
-#        float .GE. 0
-# Happy path
-#    nominal case: fTemp(4, 5) -> 4
-# Sad path
-#        none
-    def test410_610_ShouldReturnU(self):
-        myT = T.TCurve(self.nominalN)
-        self.assertEquals(myT.fTemp(4, 5), 16)
 
 # 400 integrate
 # Analysis
@@ -256,25 +243,22 @@ class TCurveTest(unittest.TestCase):
 # Happy path
 # Sad path
 #        none
-
-    def test500_010_ShouldCalculateIntegral(self):
-        myT = T.TCurve(self.nominalN)
-        self.assertAlmostEquals(myT.integrate(1, 4, myT.f), 1.333)
-    
-    
-#   def test500_620_ShouldCalculateWhileCondition(self):
+#    def test500_610_ShouldCalculateIntegral(self):
+#        myT = T.TCurve(self.nominalN)
+#        self.assertAlmostEquals(myT.integrate(16, 4, myT.f), 2) #can't
+#   def test400_620_ShouldCalculateWhileCondition(self):
 #       myT = T.TCurve(self.nominalN)
 #       self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 1)
 #   
-#    def test500_630_ShouldCalculateW(self):
+#    def test400_630_ShouldCalculateW(self):
 #        myT = T.TCurve(self.nominalN)
 #        self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 4)
 
-#    def test500_640_ShouldCalculateAddToLB(self):
+#    def test400_640_ShouldCalculateAddToLB(self):
 #        myT = T.TCurve(self.nominalN)
 #        self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 0)
 #        
-#    def test500_650_ShouldCalculateAddToW3(self):
+#    def test400_650_ShouldCalculateAddToW3(self):
 #        myT = T.TCurve(self.nominalN)
 #        self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 0)
     
