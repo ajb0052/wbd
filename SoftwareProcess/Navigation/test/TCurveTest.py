@@ -243,9 +243,9 @@ class TCurveTest(unittest.TestCase):
 # Happy path
 # Sad path
 #        none
-#    def test500_610_ShouldCalculateIntegral(self):
-#        myT = T.TCurve(self.nominalN)
-#        self.assertAlmostEquals(myT.integrate(16, 4, myT.f), 2) #can't
+    def test500_610_ShouldCalculateIntegral(self):
+        myT = T.TCurve(self.nominalN)
+        self.assertAlmostEquals(myT.integrate(16, 4, myT.f), 1.333, 3) #can't
 #   def test400_620_ShouldCalculateWhileCondition(self):
 #       myT = T.TCurve(self.nominalN)
 #       self.assertEquals(myT.integrate(1, myT.n, myT.fTemp), 1)
