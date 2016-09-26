@@ -80,7 +80,7 @@ class TCurve(object):
                 if(i == 0):
                     multToW3 = f(lowBound, n)
                 elif(i<s):
-                    if(i%2==0): #the second term is when i is 1: has opposite mod
+                    if(i%2==0): #the second term is when i is 1: has opposite modulation
                         coefficient = 2
                     elif(i%2==1):
                         coefficient = 4
