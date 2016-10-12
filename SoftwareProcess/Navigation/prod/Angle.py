@@ -31,10 +31,15 @@ class Angle():
     Raised when: "degrees" violates the parameter specifications
     Exit conditions: The instance remains in the state it was in before the
     method was invoked. No new instance is produced '''
-    def setDegrees(self, degrees):
+    def setDegrees(self, degrees=0.0):
         try:
-            self.degrees = degrees
-            return self.degrees%360
+            if(isinstance(degrees, str)):
+                raise NameError('ValueError')
+            if(isinstance(degrees, int)):
+                degrees = float(degrees)
+            if(isinstance(degrees, float)):
+                self.degrees = degrees%360
+                return self.degrees
         except ValueError:
             print("Exceptions Raised: invalid")
             
@@ -52,11 +57,44 @@ class Angle():
     '''
     def setDegreesAndMinutes(self, angleString):
         try:
+            if(isinstance(angleString, str) == False):
+                raise NameError('ValueError')
+            if(angleString.find("d") == False):
+                raise NameError('ValueError')
+            if(angleString[0] == "d"):
+                raise NameError('ValueError')
             degreesAndMinutes = angleString.split('d')
-            if(len(degreesAndMinutes) == 2):
-                self.degrees = float(degreesAndMinutes[0])
-                self.minutes = float(degreesAndMinutes[1])
-                return self.degrees%360
+            length = len(degreesAndMinutes)
+            if(length == 2):
+                if '.' in degreesAndMinutes[0]:
+                    raise NameError('ValueError')
+                if(degreesAndMinutes[0] == ''):
+                    raise NameError('ValueError')
+                if(degreesAndMinutes[1] == ''):
+                    raise NameError('ValueError')
+                if '-' in degreesAndMinutes[1]:
+                    raise NameError('ValueError')
+                        
+                #degrees
+                deg = float(degreesAndMinutes[0])
+                self.degrees = deg
+                #minutes
+                if '.' in degreesAndMinutes[1]:
+                    splitMins = degreesAndMinutes[1].split('.')
+                    decCheck = len(splitMins[1])
+                    if (decCheck > 1):
+                        raise NameError('ValueError')
+                mins = float(degreesAndMinutes[1])
+                self.minutes = mins/60
+                if((-360 < deg) and (deg < 0)):
+                    result = 360 - (abs(deg) + self.minutes)
+                else:
+                    self.degrees = self.degrees%360
+                    self.degrees = abs(self.degrees)
+                    result = self.degrees + self.minutes
+                return result
+            else:
+                raise NameError('ValueError')
         except ValueError:
             print("Exception Raised: invalid")
     '''
@@ -71,11 +109,14 @@ class Angle():
     Exit conditions: The instance remains in the state it was 
         in before the method was invoked
     '''
-    def add(self, angle):
+    def add(self, angle=None):
         try:
+            if((isinstance(angle, Angle) == False) or (angle == None)):
+                raise NameError('ValueError')
             self.degrees = self.degrees + angle.degrees
-            self.minutes = self.minutes + angle.minutes
-            return self.degrees%360
+            self.degrees = self.degrees%360
+            self.minutes = self.minutes%60 + angle.minutes%60
+            return self.degrees + self.minutes
         except ValueError:
             print("Exception Raised: invalid")
     '''
@@ -91,8 +132,10 @@ class Angle():
     Exit Conditions: The instance remains in the state it 
         was in before the method was invoked.
     '''
-    def subtract(self, angle):
+    def subtract(self, angle=None):
         try:
+            if((isinstance(angle, Angle) == False) and (angle == None)):
+                raise NameError('ValueError')
             self.degrees = self.degrees - angle.degrees
             self.minutes = self.minutes - angle.minutes
             return self.degrees%360
@@ -105,26 +148,28 @@ class Angle():
         to current instance. Mandatory. Arrives invalidated.
     Returns: An integer having the value: 
         -1 if the instance is less than the value passed as a parameter
-            0 if the instance is equal to the value passed as a parameter
-            1 if the instance is greater than the value passed as a parameter
+        0 if the instance is equal to the value passed as a parameter
+        1 if the instance is greater than the value passed as a parameter
     state change: No state change
     Exceptions: Type: ValueError
     Raised when: "angle" is not a valid instance of Angle
     Exit conditions: The instance remains in the state it was in
     before the method was invoked.
     '''
-    def compare(self, angle):
+    def compare(self, angle=None):
         try:
-            if (self.degrees == angle.degrees):
-                if (self.minutes == angle.minutes):
+            if ((isinstance(angle, Angle) == False) and (angle == None)):
+                raise NameError('ValueError')
+            if (self.degrees%360 == angle.degrees%360):
+                if (self.minutes%60 == angle.minutes%60):
                     return 0
-                elif (self.minutes < angle.minutes):
+                elif (self.minutes%60 < angle.minutes%60):
                     return -1
-                elif (self.minutes > angle.minutes):
+                elif (self.minutes%60 > angle.minutes%60):
                     return 1
-            elif (self.degrees < angle.degrees):
+            elif (self.degrees%360 < angle.degrees%360):
                     return -1
-            elif (self.degrees > angle.degrees):
+            elif (self.degrees%360 > angle.degrees%360):
                     return 1
         except ValueError:
             print("Exception Raised: invalid")
@@ -151,7 +196,15 @@ class Angle():
     Exceptions: No exceptions are raised.
     '''
     def getDegrees(self):
-        return self.degrees%360
+        deg = self.degrees
+        mins = self.minutes
+        mins = mins%60
+        if(self.degrees < 0):
+            result = 360 - (abs(deg) + mins)
+        else:
+            result = deg + mins
+        
+        return result
     
     
     
