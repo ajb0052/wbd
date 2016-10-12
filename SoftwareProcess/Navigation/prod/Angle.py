@@ -203,7 +203,6 @@ class Angle():
             result = 360 - (abs(deg) + mins)
         else:
             result = deg + mins
-        
         return result
     
     
