@@ -33,7 +33,7 @@ class FixTest(unittest.TestCase):
 #            Sad path
 #               invalid parameter
 #      Happy path
-    def test100_010_ShouldCreatInstanceOfAngle(self):
+    def test100_010_ShouldCreatInstanceOfFix(self):
         self.assertIsInstance(Fix.Fix('logFile.txt'), Fix.Fix)
     
     def test100_010_ShouldWriteToFile(self):
