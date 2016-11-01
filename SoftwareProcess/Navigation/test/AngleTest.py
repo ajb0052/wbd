@@ -77,7 +77,13 @@ class AngleTest(unittest.TestCase):
         anAngle = Angle.Angle()
         self.assertAlmostEquals(319.9, anAngle.setDegrees(-400.1), delta=self.delta)
         
-
+#     SadPath
+    def test200_910_ShouldRaiseExceptionOnNonIntNonFloatDegrees(self):
+        expectedDiag = self.className + "setDegrees:"
+        anAngle = Angle.Angle()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegrees("abc")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
 
 #-----------------------------------------------------------------
 #    Acceptance Test: 300
@@ -99,7 +105,6 @@ class AngleTest(unittest.TestCase):
 #                none*
 #
 #    Happy path
-
     def test300_010_ShouldReturnFloat(self):
         anAngle = Angle.Angle()
         anAngle.setDegrees(5)
@@ -209,6 +214,70 @@ class AngleTest(unittest.TestCase):
         self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1])  
         self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())    
         
+#   Sad path
+    def test400_910_ShouldRaiseExceptionOnMissingDegrees(self):
+        expectedDiag = self.className + "setDegreesAndMinutes:"
+        anAngle = Angle.Angle()
+        originalValue = anAngle.getDegrees()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegreesAndMinutes("d10.0")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
+        self.assertAlmostEquals(originalValue, anAngle.getDegrees())    
+   
+    def test400_920_ShouldRaiseExceptionOnNonintegerDegrees(self):
+        expectedDiag = self.className + "setDegreesAndMinutes:"
+        anAngle = Angle.Angle()
+        originalValue = anAngle.getDegrees()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegreesAndMinutes("1.1d10.0")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])  
+        self.assertAlmostEquals(originalValue, anAngle.getDegrees())   
+   
+    def test400_930_ShouldRaiseExceptionOnMissingD(self):
+        expectedDiag = self.className + "setDegreesAndMinutes:"
+        anAngle = Angle.Angle()
+        originalValue = anAngle.getDegrees()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegreesAndMinutes("11.5")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])  
+        self.assertAlmostEquals(originalValue, anAngle.getDegrees())                   
+    
+    def test400_940_ShouldRaiseExceptionOn2DecimalY(self):
+        expectedDiag = self.className + "setDegreesAndMinutes:"
+        anAngle = Angle.Angle()
+        originalValue = anAngle.getDegrees()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegreesAndMinutes("10d5.55")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])  
+        self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
+    
+    def test400_950_ShouldRaiseExceptionOnNegativeY(self):
+        expectedDiag = self.className + "setDegreesAndMinutes:"
+        anAngle = Angle.Angle()
+        originalValue = anAngle.getDegrees()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegreesAndMinutes("10d-10.0")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])  
+        self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
+                      
+    def test400_960_ShouldRaiseExceptionOnNonintegerY(self):
+        expectedDiag = self.className + "setDegreesAndMinutes:"
+        anAngle = Angle.Angle()
+        originalValue = anAngle.getDegrees()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegreesAndMinutes("10da")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
+        self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
+    
+    def test400_970_ShouldRaiseExceptionOnMissingY(self):
+        expectedDiag = self.className + "setDegreesAndMinutes:"
+        anAngle = Angle.Angle()
+        originalValue = anAngle.getDegrees()
+        with self.assertRaises(ValueError) as context:
+            anAngle.setDegreesAndMinutes("10d")
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
+        self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
+
 
 #-----------------------------------------------------------------
 #    Acceptance Test: 500
@@ -258,6 +327,25 @@ class AngleTest(unittest.TestCase):
         angle2.setDegrees(180)
         self.assertEquals(20.0, angle1.add(angle2))
         self.assertEquals(20.0, angle1.getDegrees())       
+
+#   Sad path
+    def test500_910_ShouldRaiseExceptionOnMissingPam(self):
+        expectedDiag = self.className + "add:"
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(42.0)
+        with self.assertRaises(ValueError) as context:
+            anAngle.add()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
+        self.assertEquals(42.0, anAngle.getDegrees())
+   
+    def test500_920_ShouldRaiseExceptionOnNonangleParm(self):
+        expectedDiag = self.className + "add:"
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(100.0)
+        with self.assertRaises(ValueError) as context:
+            anAngle.add(5)
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+        self.assertEquals(100.0, anAngle.getDegrees())
 
 
 
@@ -311,6 +399,27 @@ class AngleTest(unittest.TestCase):
         self.assertEquals(359.5, angle1.subtract(angle2))
         self.assertEquals(359.5, angle1.getDegrees())       
 
+#   Sad path
+    def test600_910_ShouldRaiseExceptionOnMissingPam(self):
+        expectedDiag = self.className + "subtract:"
+        originalValue = 42.0
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(originalValue)
+        with self.assertRaises(ValueError) as context:
+            anAngle.subtract()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
+        self.assertEquals(originalValue, anAngle.getDegrees())
+   
+    def test600_920_ShouldRaiseExceptionOnNonangleParm(self):
+        expectedDiag = self.className + "subtract:"
+        originalValue = 100.0
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(originalValue)
+        with self.assertRaises(ValueError) as context:
+            anAngle.subtract(5)
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+        self.assertEquals(originalValue, anAngle.getDegrees())
+
 
 #-----------------------------------------------------------------
 #    Acceptance Test: 700
@@ -360,6 +469,27 @@ class AngleTest(unittest.TestCase):
         angle2.setDegrees(0.5)
         self.assertEquals(-1, angle1.compare(angle2))     
 
+#   Sad path
+    def test700_910_ShouldRaiseExceptionOnMissingPam(self):
+        expectedDiag = self.className + "compare:"
+        originalValue = 42.0
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(originalValue)
+        with self.assertRaises(ValueError) as context:
+            anAngle.compare()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
+        self.assertEquals(originalValue, anAngle.getDegrees())
+   
+    def test700_920_ShouldRaiseExceptionOnNonangleParm(self):
+        expectedDiag = self.className + "compare:"
+        originalValue = 100.0
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(originalValue)
+        with self.assertRaises(ValueError) as context:
+            anAngle.compare(5)
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+        self.assertEquals(originalValue, anAngle.getDegrees())
+
 
 #-----------------------------------------------------------------
 #    Acceptance Test: 800
@@ -378,16 +508,21 @@ class AngleTest(unittest.TestCase):
 #                
 #    Happy path 
 
-#   def test800_010_ShouldReturnString(self):
-#       anAngle = Angle.Angle()
-#       self.assertIsInstance(anAngle.getString(), str)  
-#
-#   def test700_020_ShouldReturnMDYYYNoRounding(self):
-#       anAngle = Angle.Angle()
-#       anAngle.setDegrees(30.5)
-#       self.assertEquals("30d30.0", anAngle.getString()) 
-#
-#   def test700_030_ShouldReturnMDYYYRounded(self):
-#       anAngle = Angle.Angle()
-#       anAngle.setDegrees(10.46/60.0)
-#       self.assertEquals("0d10.5", anAngle.getString()) 
+    def test800_010_ShouldReturnString(self):
+        anAngle = Angle.Angle()
+        self.assertIsInstance(anAngle.getString(), str)  
+
+    def test700_020_ShouldReturnMDYYYNoRounding(self):
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(30.5)
+        self.assertEquals("30d30.0", anAngle.getString()) 
+
+    def test700_030_ShouldReturnMDYYYRounded(self):
+        anAngle = Angle.Angle()
+        anAngle.setDegrees(10.46/60.0)
+        self.assertEquals("0d10.5", anAngle.getString()) 
+
+
+
+
+
