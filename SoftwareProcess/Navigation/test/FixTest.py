@@ -413,6 +413,10 @@ class TestFix(unittest.TestCase):
         logFileContents = theLogFile.readlines()
         theLogFile.close()
         
+<<<<<<< HEAD
+    
+=======
+>>>>>>> branch 'CA03' of https://github.com/ajb0052/wbd.git
         sightingCount = 0
         for logEntryNumber in range(0, len(logFileContents)):
             if(logFileContents[logEntryNumber].find(targetStringList[0]) > -1):
