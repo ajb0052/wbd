@@ -5,7 +5,6 @@ Created on Oct 29, 2016
 '''
 import unittest
 import Navigation.prod.Fix as Fix
-import os
 
 
 class FixTest(unittest.TestCase):

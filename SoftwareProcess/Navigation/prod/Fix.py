@@ -9,6 +9,7 @@ import time
 import math
 import os
 import Navigation.prod.Angle as Angle
+
 class Fix():
     def __init__(self, logFile="log.txt"):
         self.starFile = None

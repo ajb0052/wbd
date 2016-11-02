@@ -413,6 +413,7 @@ class TestFix(unittest.TestCase):
         logFileContents = theLogFile.readlines()
         theLogFile.close()
         
+    
         sightingCount = 0
         for logEntryNumber in range(0, len(logFileContents)):
             if(logFileContents[logEntryNumber].find(targetStringList[0]) > -1):
