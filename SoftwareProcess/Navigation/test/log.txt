@@ -1,1 +1,1 @@
-LOG: 2016-12-03 5:17:59 -7:00 Log file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG: 2016-12-04 4:7:23-7:00 Log file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
