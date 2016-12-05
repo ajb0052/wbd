@@ -212,7 +212,7 @@ class Test(unittest.TestCase):
         aFix.setAriesFile("aries.txt")
         aFix.getSightings("N27d59.5", "85d33.4")
         logfile = open('200_testLogCA05.txt', 'r')
-        expected = "174"
+        expected = "N29d68"
         actual = 0
         
         for line in logfile.readlines():
@@ -229,7 +229,7 @@ class Test(unittest.TestCase):
         aFix.setAriesFile("aries.txt")
         aFix.getSightings("N27d59.5", "85d33.4")
         logfile = open('200_030_testLogCA05.txt', 'r')
-        expected = "174"
+        expected = "82d52.9"
         actual = 0
         
         for line in logfile.readlines():
