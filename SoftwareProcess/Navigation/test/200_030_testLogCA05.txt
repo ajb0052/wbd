@@ -1,0 +1,16 @@
+LOG: 2016-12-04 4:8:30-7:00 Log file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\200_030_testLogCA05.txt
+LOG: 2016-12-04 4:8:30-7:00 Sighting file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\sightingFileCA05.xml
+LOG: 2016-12-04 4:8:30-7:00 Star file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG: 2016-12-04 4:8:30-7:00 Aries file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG: 2016-12-04 4:8:30-7:00 Pollux	2017-04-17	23:50:14	015d04.9	27d59.1	163d56.0	N27d59.5	85d33.4	0.0	0
+LOG: 2016-12-04 4:8:30-7:00 Unknown	2017-04-17	10:30:30	00d0.2	0d0.0	0d0.0	N27d59.5	85d33.4	1.57079632679	0
+LOG: 2016-12-04 4:8:30-7:00 Sighting errors:	0
+Approximate latitude:	0d0.0	Approximate longitude:	0d0.0
+LOG: 2016-12-04 4:8:30-7:00 Log file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\200_030_testLogCA05.txt
+LOG: 2016-12-04 4:8:30-7:00 Sighting file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\sightingFileCA05.xml
+LOG: 2016-12-04 4:8:30-7:00 Star file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG: 2016-12-04 4:8:30-7:00 Aries file:	D:\6700_Process\Git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG: 2016-12-04 4:8:30-7:00 Pollux	2017-04-17	23:50:14	015d04.9	27d59.1	163d56.0	N27d59.5	85d33.4	0.0	0
+LOG: 2016-12-04 4:8:30-7:00 Unknown	2017-04-17	10:30:30	00d0.2	0d0.0	0d0.0	N27d59.5	85d33.4	1.57079632679	0
+LOG: 2016-12-04 4:8:30-7:00 Sighting errors:	0
+Approximate latitude:	0d0.0	Approximate longitude:	0d0.0
